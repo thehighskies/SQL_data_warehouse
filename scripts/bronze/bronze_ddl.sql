@@ -1,9 +1,8 @@
-/*
-==================================================================================================
+/*================================================================================================
 Creates the Bronze Layer tables in the DataWarehouse database.
 
-Creation Date: 2024-06-10
-Script Name: BronzeLayerDDL_Script.sql
+Creation Date: 26-07-2026
+Name: BronzeLayerDDL_Script.sql
 ================================================================================================== 
 Script Purpose: 
     This script creates the necessary tables in the Bronze schema of the DataWarehouse database. 
@@ -16,14 +15,14 @@ Script Purpose:
     4. erp_cust_az12: Stores customer details from the ERP system.
     5. erp_loc_a101: Stores location details from the ERP system.    
     6. erp_px_cat_g1v2: Stores product category details from the ERP system.
-
-*/
-
+==================================================================================================*/
+USE DataWarehouse;
+GO
 -- Creating the crm_cust_info table in the Bronze schema to store customer information from the CRM system.
-IF OBJECT_ID('Bronze.crm_cust_info', 'U') IS NOT NULL
-    DROP TABLE Bronze.crm_cust_info;
+IF OBJECT_ID('bronze.crm_cust_info', 'U') IS NOT NULL
+    DROP TABLE bronze.crm_cust_info;
 
-CREATE TABLE Bronze.crm_cust_info (
+CREATE TABLE bronze.crm_cust_info (
     cst_id INT,
     cst_key NVARCHAR(50),
     cst_firstname NVARCHAR(50),
@@ -33,11 +32,11 @@ CREATE TABLE Bronze.crm_cust_info (
     cst_create_date DATE
 ); 
 
--- Creating the crm product information table in the Bronze schema to store product details from the CRM system.
-IF OBJECT_ID('Bronze.crm_prd_info', 'U') IS NOT NULL
-    DROP TABLE Bronze.crm_prd_info;
+-- Creating the crm product information table in the bronze schema to store product details from the CRM system.
+IF OBJECT_ID('bronze.crm_prd_info', 'U') IS NOT NULL
+    DROP TABLE bronze.crm_prd_info;
 
-CREATE TABLE Bronze.crm_prd_info (
+CREATE TABLE bronze.crm_prd_info (
    prd_id INT,
    prd_key NVARCHAR(50),
    prd_nm NVARCHAR(100),
@@ -47,11 +46,11 @@ CREATE TABLE Bronze.crm_prd_info (
    prd_end_dt DATETIME  
 );  
 
--- Creating the crm sales information table in the Bronze schema to store sales transaction details from the CRM system.
-IF OBJECT_ID('Bronze.crm_sales_details', 'U') IS NOT NULL
-    DROP TABLE Bronze.crm_sales_details;
+-- Creating the crm sales information table in the bronze schema to store sales transaction details from the CRM system.
+IF OBJECT_ID('bronze.crm_sales_details', 'U') IS NOT NULL
+    DROP TABLE bronze.crm_sales_details;
 
-CREATE TABLE Bronze.crm_sales_details (
+CREATE TABLE bronze.crm_sales_details (
     sls_ord_num NVARCHAR(50),
     sls_prd_key NVARCHAR(50),
     sls_cust_id INT,
@@ -63,32 +62,33 @@ CREATE TABLE Bronze.crm_sales_details (
     sls_price INT
 );
 
--- Creating the erp customer information table in the Bronze schema to store customer details from the ERP system.
-IF OBJECT_ID('Bronze.erp_cust_az12', 'U') IS NOT NULL
-    DROP TABLE Bronze.erp_cust_az12;
+-- Creating the erp customer information table in the bronze schema to store customer details from the ERP system.
+IF OBJECT_ID('bronze.erp_cust_az12', 'U') IS NOT NULL
+    DROP TABLE bronze.erp_cust_az12;
 
-CREATE TABLE Bronze.erp_cust_az12(
+CREATE TABLE bronze.erp_cust_az12(
     cid NVARCHAR(50),
     bdate DATE,
     gen NVARCHAR(50)
 );
 
--- Creating the erp location information table in the Bronze schema to store location details from the ERP system.
-IF OBJECT_ID('Bronze.erp_loc_a101', 'U') IS NOT NULL
-    DROP TABLE Bronze.erp_loc_a101;
+-- Creating the erp location information table in the bronze schema to store location details from the ERP system.
+IF OBJECT_ID('bronze.erp_loc_a101', 'U') IS NOT NULL
+    DROP TABLE bronze.erp_loc_a101;
 
-CREATE TABLE Bronze.erp_loc_a101(
+CREATE TABLE bronze.erp_loc_a101(
     cid NVARCHAR(50),
     cntry NVARCHAR(50)
 );
 
--- Creating the erp product category information table in the Bronze schema to store product category details from the ERP system.
-IF OBJECT_ID('Bronze.erp_px_cat_g1v2', 'U') IS NOT NULL
-    DROP TABLE Bronze.erp_px_cat_g1v2;
+-- Creating the erp product category information table in the bronze schema to store product category details from the ERP system.
+IF OBJECT_ID('bronze.erp_px_cat_g1v2', 'U') IS NOT NULL
+    DROP TABLE bronze.erp_px_cat_g1v2;
 
-CREATE TABLE Bronze.erp_px_cat_g1v2(
+CREATE TABLE bronze.erp_px_cat_g1v2(
     id NVARCHAR(50),
     cat NVARCHAR(50),
     subcat NVARCHAR(50),
     maintenance NVARCHAR(50)
 );
+/*==================================================================================================*/
