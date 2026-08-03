@@ -83,7 +83,7 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ## About Me
 
-Hi there! I'm **Khan**, an aspiring Data Scientist with a strong self taught foundation in **Data Engineering** and **Data Analytics**. 
+Hi there! I'm **Khan**, an aspiring self taught Data Scientist with skills in **Data Engineering** and **Data Analytics**. 
 
 I enjoy bridging the gap between raw data and business strategy whether that means building robust ETL pipelines and designing data architectures, or analyzing metrics to extract actionable insights.
 
