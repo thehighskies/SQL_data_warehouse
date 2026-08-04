@@ -1,5 +1,5 @@
-/*===============================================================================
-    Quality Tests
+/*=============================================================================
+    Silver layer Data Quality Tests
 ===============================================================================
 Script Purpose:
     This script performs various quality checks for data consistency, accuracy, 
@@ -84,7 +84,7 @@ Usage Notes:
     HAVING COUNT(*) > 1 OR prd_id IS NULL;
 
 -- Results: Meeting expectation. 
---------------------------------------------------
+
 -- Checking for unwanted spaces in prd_nm.
 -- Expectations: No Result. 
     
@@ -93,7 +93,7 @@ Usage Notes:
     FROM silver.crm_prd_info
     WHERE prd_nm != TRIM(prd_nm);
 -- Results: Meeting expectation. 
---------------------------------------------------
+
 -- Checking for NULLS & Negtive number in prd_cost.
 -- Expectations: No Result. 
 SELECT 
@@ -101,12 +101,12 @@ SELECT
 FROM silver.crm_prd_info
 WHERE prd_cost < 0 OR prd_cost IS NULL;
 -- Results: Meeting expectation
---------------------------------------------------
+
 -- Checking for the consistency of values in low cardinality columns; prd_line
 -- Data standerdization & consistancy
 SELECT DISTINCT prd_line 
 FROM silver.crm_prd_info;
---------------------------------------------------
+
 -- Checking for invalid dates.
 -- Expectations: No Result. 
 
