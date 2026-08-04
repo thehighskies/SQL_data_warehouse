@@ -1,8 +1,5 @@
 /*================================================================================================
-Loads the raw source files into the bronze layer tables within the DataWarehouse database.
-
-Creation Date: 26-07-2026
-Name: bronze_load.sql
+    Loads the raw source files into the bronze layer tables within the DataWarehouse database.
 ================================================================================================== 
 Script Purpose: 
     This script is responsible for ingesting raw CRM and ERP source data from CSV files into the bronze schema.
@@ -15,9 +12,9 @@ Script Purpose:
     4. Utilizes BULK INSERT with CSV formatting to efficiently ingest the raw data into the target tables.
 ==================================================================================================*/
 
--------------------------------------------------------------------------
---    Loading CRM data from cust_info.csv into bronze.crm_cust_info
--------------------------------------------------------------------------
+/*=========================================================================
+  Loading CRM data from cust_info.csv into bronze.crm_cust_info
+=========================================================================*/
 -- Empty table before bulk load (Truncating & Inserting).
     TRUNCATE TABLE bronze.crm_cust_info;
 
@@ -37,9 +34,9 @@ Script Purpose:
 
 -- Counting the number of records 
     SELECT COUNT(*) AS RecordCount FROM bronze.crm_cust_info;
--------------------------------------------------------------------------
+/*=========================================================================
 --    Loading CRM data from prd_info.csv into bronze.crm_prd_info
--------------------------------------------------------------------------
+=========================================================================*/
     TRUNCATE TABLE bronze.crm_prd_info;
     
     BULK INSERT bronze.crm_prd_info
@@ -51,9 +48,9 @@ Script Purpose:
         ROWTERMINATOR = '\n',          
         TABLOCK                         
     );
--------------------------------------------------------------------------
+/*=========================================================================
 -- Loading CRM data from sales_details.csv into bronze.crm_sales_details
--------------------------------------------------------------------------
+=========================================================================*/
     TRUNCATE TABLE bronze.crm_sales_details; 
 
     BULK INSERT bronze.crm_sales_details
@@ -65,9 +62,9 @@ Script Purpose:
         ROWTERMINATOR = '\n',           
         TABLOCK                         
     );
--------------------------------------------------------------------------
+/*=========================================================================
 -- Loading ERP data from CUST_AZ12.csv into bronze.erp_cust_az12
--------------------------------------------------------------------------
+=========================================================================*/
     TRUNCATE TABLE bronze.erp_cust_az12;
 
 
@@ -80,9 +77,9 @@ Script Purpose:
         ROWTERMINATOR = '\n',          
         TABLOCK                         
     );
--------------------------------------------------------------------------
+/*=========================================================================
 -- Loading ERP data from LOC_A101.csv into bronze.erp_loc_a101
--------------------------------------------------------------------------
+=========================================================================*/
     TRUNCATE TABLE bronze.erp_loc_a101;
 
 
@@ -95,9 +92,9 @@ Script Purpose:
         ROWTERMINATOR = '\n',           
         TABLOCK                    
     );
--------------------------------------------------------------------------
+/*=========================================================================
 -- Loading ERP data from PX_CAT_G1V2.csv into bronze.erp_px_cat_g1v2
--------------------------------------------------------------------------
+=========================================================================*/
     TRUNCATE TABLE bronze.erp_px_cat_g1v2;
     
 

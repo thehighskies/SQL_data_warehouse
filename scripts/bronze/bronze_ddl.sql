@@ -1,8 +1,5 @@
 /*================================================================================================
-Creates the Bronze Layer tables in the DataWarehouse database.
-
-Creation Date: 26-07-2026
-Name: BronzeLayerDDL_Script.sql
+    Creates the Bronze Layer tables in the DataWarehouse database.
 ================================================================================================== 
 Script Purpose: 
     This script creates the necessary tables in the Bronze schema of the DataWarehouse database. 
