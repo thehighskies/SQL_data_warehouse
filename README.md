@@ -105,50 +105,7 @@ SQL_DWH_Analytics_Project/
 The project follows the **Medallion Architecture**, a layered approach to data warehouse design:
 
 
-
-
-```
-┌─────────────┐
-│  Data      │
-│ Sources    │
-│ (CRM/ERP)  │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────────────────────┐
-│  BRONZE LAYER                   │
-│  (Raw Data Ingestion)           │
-│  - Minimal transformation       │
-│  - Direct replication of source │
-│  - Rapid loading                │
-└──────┬──────────────────────────┘
-       │
-       ▼
-┌─────────────────────────────────┐
-│  SILVER LAYER                   │
-│  (Cleansed & Standardized)      │
-│  - Data quality checks          │
-│  - Schema standardization       │
-│  - Reconciliation & validation  │
-│  - Integration from sources     │
-└──────┬──────────────────────────┘
-       │
-       ▼
-┌─────────────────────────────────┐
-│  GOLD LAYER                     │
-│  (Business Analytics)           │
-│  - Star schema dimensions       │
-│  - Fact tables                  │
-│  - Ready for reporting & BI     │
-│  - Optimized for queries        │
-└──────┬──────────────────────────┘
-       │
-       ▼
-┌─────────────┐
-│ Analytics   │
-│ & Reports   │
-└─────────────┘
-```
+<img width="1035" height="722" alt="data architechture" src="https://github.com/user-attachments/assets/e44823e8-e78c-44bc-9c90-1e3e3e9540c9" />
 
 ---
 
