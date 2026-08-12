@@ -1,77 +1,403 @@
 # Data Warehouse (DWH) and Analytics Project
 
-> Welcome to my Data Warehouse (DWH) and Analytics Portfolio Project!
+> Welcome to my **Data Warehouse (DWH) and Analytics** Portfolio Project!
 
-### Overview
+## Overview
 
-This project focuses on building a modern data warehouse using the Medallion Architecture in SQL Server (SSMS), encompassing end-to-end ETL processes, data modeling, and business analytics.
+This is a comprehensive, end-to-end data warehouse solution built with **SQL Server** using the **Medallion Architecture** (Bronze → Silver → Gold). The project demonstrates a complete data engineering and analytics workflow, including:
 
-To showcase a well-rounded data skill set, this project covers two primary domains:
+- **Data Integration**: Consolidating disparate data from multiple sources (CRM and ERP systems)
+- **ETL Pipeline**: Robust extraction, transformation, and loading processes
+- **Data Modeling**: Star schema design optimized for analytical queries
+- **Data Quality**: Comprehensive validation and cleansing throughout the pipeline
+- **Analytics**: Business-ready views and dimensions for reporting
 
-_**1. Data Engineering**_: 
-
-* Designing data architecture, implementing data modeling, and building robust ETL pipelines. 
-
-_**2. Data Analytics**_: 
-
-* Querying the warehouse, analyzing metrics, and generating actionable business reports.
-
-
-                     Data Engineering          Data Analytics
-
-                 ┌────────────────────────┐  ┌────────────────┐
-
-              Data Sources ──> ETL ──> Data Warehouse ──> Reports
-
+### Key Technologies & Tools
+- **SQL Server** (SSMS) with T-SQL
+- **Medallion Architecture** (Layered data warehouse design)
+- **Star Schema** (Dimensional modeling)
+- **CSV Data Sources** (CRM and ERP systems)
 
 ---
 
-## Project Objectives & Requirements
+## Project Objectives & Scope
 
-#### _Data Engineering: Building the Data Warehouse_
+This project showcases expertise across two primary domains:
 
-Objective Develop a centralized, modern data warehouse in SQL Server using the Medallion Architecture to consolidate disparate sales data, clean raw inputs, and build an optimized analytical model.
+### 1. Data Engineering: Building the Data Warehouse
 
-**Key Specifications**
-**Data Sources:** 
+**Objective**: Develop a centralized, modern data warehouse to consolidate sales data from disparate source systems, cleanse raw inputs, and build an optimized analytical model.
 
-* Ingest and integrate transactional data from two distinct source systems (ERP and CRM) provided via CSV files.
+**Key Specifications**:
+- **Data Sources**: Ingest and integrate transactional data from CRM and ERP systems (CSV files)
+- **Data Quality & Cleansing**: Handle data anomalies, missing values, and schema inconsistencies
+- **Data Integration & Modeling**: Transform and combine source systems into a unified Star Schema for performant querying
+- **Data Historization**: Process and present latest snapshot (SCD Type 0/1); historical tracking out of scope
+- **Documentation**: Comprehensive data modeling documentation and data dictionaries
 
-**Data Quality & Cleansing:** 
+### 2. Data Analytics: BI & Business Reporting
 
-* Identify, handle, and resolve data anomalies, missing values, and schema inconsistencies prior to downstream reporting.
+**Objective**: Extract actionable business intelligence through complex SQL queries and analytical models.
 
-**Data Integration & Modeling:** 
-
-* Transform and combine source systems into a unified, user-friendly Star Schema (or Snowflake Schema) designed for performant analytical querying. 
-
-**Scope & Historization:** 
-
-* Process and present the latest snapshot of data (SCD Type 0/1); historical data tracking (SCD Type 2) is out of scope. 
-
-**Documentation:** 
-
-* Produce comprehensive data modeling documentation and data dictionaries to guide analytics teams and business stakeholders.
+**Key Deliverables**:
+- **Customer Behavior**: Purchasing patterns, customer lifetime value, demographics, retention metrics
+- **Product Performance**: Top/bottom-performing products, revenue drivers, category performance
+- **Sales Trends**: Temporal patterns, revenue growth, seasonal spikes for strategic decision-making
 
 ---
-  
-#### _Data Analytics: BI & Business Reporting_
 
-Objective Formulate complex SQL queries and analytical models to extract actionable business intelligence across core sales domain dimensions.
+## Project Structure
 
-**Key Deliverables**
+```
+SQL_DWH_Analytics_Project/
+│
+├── datasets/                          # Source data files
+│   ├── source_crm/                    # CRM system data
+│   │   ├── cust_info.csv             # Customer information
+│   │   ├── prd_info.csv              # Product information
+│   │   └── sales_details.csv         # Sales transactions
+│   └── source_erp/                    # ERP system data
+│       ├── CUST_AZ12.csv             # Customer details
+│       ├── LOC_A101.csv              # Location information
+│       └── PX_CAT_G1V2.csv           # Product categories
+│
+├── scripts/                           # SQL scripts organized by layer
+│   ├── db_ddl/                        # Database setup
+│   │   └── db_ddl_script.sql         # Create database & schemas
+│   ├── bronze/                        # Raw data layer
+│   │   ├── bronze_ddl.sql            # Table definitions
+│   │   ├── bronze_load.sql           # Data ingestion
+│   │   └── bronze_sp.sql             # Stored procedures
+│   ├── silver/                        # Cleansed data layer
+│   │   ├── silver_ddl.sql            # Table definitions
+│   │   ├── silver_loading.sql        # Data transformation
+│   │   ├── silver_data_transformation.sql  # Business logic
+│   │   └── silver_sp.sql             # Stored procedures
+│   └── gold/                          # Analytical layer
+│       ├── gold_ddl.sql              # Dimensional views
+│       └── gold_data_integration.sql # Analytics queries
+│
+├── tests/                             # Data quality tests
+│   ├── silver_quality_checks_.sql    # Silver layer validation
+│   └── gold_quality_checks.sql       # Gold layer validation
+│
+├── documents/                         # Documentation & artifacts
+│   ├── diagrams/                      # Architecture & design diagrams
+│   │   ├── Data Architecture.drawio  # System architecture
+│   │   ├── Data Flow diagram.drawio  # ETL flow
+│   │   ├── Data Integration Model.drawio  # Integration design
+│   │   └── Data Mart (Star Schema).drawio  # Dimensional model
+│   └── project_catalogs/              # Data documentation
+│       ├── data_catalog.ipynb        # Data dictionary
+│       ├── full_project_catalog.ipynb # Complete catalog
+│       └── naminng_conventions.ipynb # Naming standards
+│
+├── LICENSE                            # MIT License
+└── README.md                          # This file
+```
 
-**Customer Behavior:** 
+---
 
-* Analyze purchasing patterns, customer lifetime value, demographics, and retention metrics.
-  
-**Product Performance:**
+## Architecture Overview
 
-* Identify top/bottom-performing products, revenue drivers, and category performance.
-  
-**Sales Trends:** 
+### Medallion Architecture Pattern
 
-* Track temporal patterns, revenue growth over time, and seasonal sales spikes to empower strategic decision-making.
+The project follows the **Medallion Architecture**, a layered approach to data warehouse design:
+
+
+
+
+```
+┌─────────────┐
+│  Data      │
+│ Sources    │
+│ (CRM/ERP)  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  BRONZE LAYER                   │
+│  (Raw Data Ingestion)           │
+│  - Minimal transformation       │
+│  - Direct replication of source │
+│  - Rapid loading                │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  SILVER LAYER                   │
+│  (Cleansed & Standardized)      │
+│  - Data quality checks          │
+│  - Schema standardization       │
+│  - Reconciliation & validation  │
+│  - Integration from sources     │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  GOLD LAYER                     │
+│  (Business Analytics)           │
+│  - Star schema dimensions       │
+│  - Fact tables                  │
+│  - Ready for reporting & BI     │
+│  - Optimized for queries        │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────┐
+│ Analytics   │
+│ & Reports   │
+└─────────────┘
+```
+
+---
+
+## Data Sources
+
+### CRM System (source_crm)
+- **cust_info.csv**: Customer master data (IDs, names, demographics, status)
+- **prd_info.csv**: Product catalog (IDs, names, costs, product lines, lifecycle dates)
+- **sales_details.csv**: Sales transactions (order details, quantities, amounts, dates)
+
+### ERP System (source_erp)
+- **CUST_AZ12.csv**: Extended customer attributes (birthdates, gender, identifiers)
+- **LOC_A101.csv**: Location master data (countries, regions, customer location mapping)
+- **PX_CAT_G1V2.csv**: Product category hierarchy and classification
+
+---
+
+## Getting Started
+
+### Prerequisites
+- **SQL Server 2016+** (or Azure SQL Database)
+- **SQL Server Management Studio (SSMS)** or Azure Data Studio
+- Sample CSV data files (included in `datasets/` folder)
+
+### Setup Instructions
+
+#### Step 1: Create Database & Schemas
+Execute the database DDL script to set up the data warehouse structure:
+
+```sql
+-- Run in SSMS
+USE master;
+GO
+EXEC sp_executesql N'...' -- Execute scripts/db_ddl/db_ddl_script.sql
+```
+
+This creates:
+- Database: `DataWarehouse`
+- Schemas: `bronze`, `silver`, `gold`
+
+#### Step 2: Load Bronze Layer (Raw Data)
+Load raw data from source CSV files:
+
+```sql
+-- Execute in sequence:
+-- 1. scripts/bronze/bronze_ddl.sql       -- Create tables
+-- 2. scripts/bronze/bronze_load.sql      -- Bulk insert data
+-- 3. scripts/bronze/bronze_sp.sql        -- Stored procedures (if any)
+```
+
+The Bronze layer contains exact replicas of source data with minimal transformation.
+
+#### Step 3: Transform to Silver Layer (Cleansed Data)
+Apply data quality checks and standardization:
+
+```sql
+-- Execute in sequence:
+-- 1. scripts/silver/silver_ddl.sql                    -- Create tables
+-- 2. scripts/silver/silver_data_transformation.sql    -- Apply transformations
+-- 3. scripts/silver/silver_loading.sql                -- Load cleansed data
+-- 4. scripts/silver/silver_sp.sql                     -- Stored procedures
+```
+
+The Silver layer integrates data from both CRM and ERP, applies business rules, and ensures data quality.
+
+#### Step 4: Build Gold Layer (Analytics Ready)
+Create dimensional views for analytics:
+
+```sql
+-- Execute:
+-- 1. scripts/gold/gold_ddl.sql                   -- Create views
+-- 2. scripts/gold/gold_data_integration.sql      -- Integration queries
+```
+
+The Gold layer provides business-friendly Star Schema dimensions (`dim_customers`, `dim_products`) and facts (`fact_sales`).
+
+#### Step 5: Validate Data Quality
+Run quality assurance tests:
+
+```sql
+-- Execute:
+-- tests/silver_quality_checks_.sql   -- Silver layer validation
+-- tests/gold_quality_checks.sql      -- Gold layer validation
+```
+
+---
+
+## ETL Process Flow
+
+### 1. Extraction (Bronze Layer)
+- Read CSV files from `datasets/source_crm/` and `datasets/source_erp/`
+- Bulk insert into Bronze tables with no transformation
+- Preserve source data integrity and structure
+
+### 2. Transformation (Silver Layer)
+- **Data Cleansing**: Handle NULL values, trim whitespace, standardize formats
+- **Schema Standardization**: Align field naming and data types
+- **Data Integration**: Join CRM and ERP data using common keys
+- **Quality Validation**: Implement business rules and constraints
+- **Reconciliation**: Verify data completeness and consistency
+
+### 3. Loading (Gold Layer)
+- **Dimensional Modeling**: Create Star Schema with dimensions and facts
+- **Aggregation**: Prepare metrics and KPIs
+- **View Creation**: Expose analytical tables as SQL views
+- **Performance Optimization**: Index and optimize for query speed
+
+### 4. Validation (Quality Checks)
+- **Uniqueness**: Primary key validation
+- **Completeness**: NULL checks on critical columns
+- **Consistency**: Referential integrity between tables
+- **Accuracy**: Business rule compliance
+
+---
+
+## Database Schema
+
+### Bronze Schema (Raw Data)
+Tables store unmodified data from source systems:
+- `bronze.crm_cust_info` - CRM customer data
+- `bronze.crm_prd_info` - CRM product data
+- `bronze.crm_sales_details` - CRM sales data
+- `bronze.erp_cust_az12` - ERP customer data
+- `bronze.erp_loc_a101` - ERP location data
+- `bronze.erp_px_cat_g1v2` - ERP product categories
+
+### Silver Schema (Cleansed & Integrated)
+Tables store cleaned, standardized, and integrated data:
+- `silver.crm_cust_info` - Cleansed customer information
+- `silver.crm_prd_info` - Cleansed product information
+- `silver.crm_sales_details` - Cleansed sales details
+- `silver.erp_cust_az12` - Cleansed ERP customer data
+- `silver.erp_loc_a101` - Cleansed location data
+- `silver.erp_px_cat_g1v2` - Cleansed product categories
+
+### Gold Schema (Dimensional Analytics)
+Views expose business-ready analytical data:
+- `gold.dim_customers` - Customer dimension with integrated attributes
+- `gold.dim_products` - Product dimension with categories and costs
+- `gold.fact_sales` - Sales fact table with measures and foreign keys
+
+---
+
+## Data Quality & Testing
+
+### Quality Checks Implemented
+
+#### Silver Layer Tests (`tests/silver_quality_checks_.sql`)
+- ✅ Duplicate & NULL checks on primary keys
+- ✅ Whitespace validation in string fields
+- ✅ Data standardization verification
+- ✅ Date range and order validation
+- ✅ Cross-field consistency checks
+
+#### Gold Layer Tests (`tests/gold_quality_checks.sql`)
+- ✅ Data completeness (no unexpected NULLs)
+- ✅ Data consistency (standardized values like 'Unknown')
+- ✅ Primary key uniqueness
+- ✅ Referential integrity (Foreign keys)
+- ✅ Dimension cardinality validation
+
+### Running Quality Tests
+```sql
+-- Execute to validate Silver layer
+EXECUTE AS USER = 'dbo'
+EXEC sp_executesql N'...' -- scripts/tests/silver_quality_checks_.sql
+
+-- Execute to validate Gold layer
+EXEC sp_executesql N'...' -- scripts/tests/gold_quality_checks.sql
+```
+
+---
+
+## Documentation
+
+### Included Documentation
+
+#### Diagrams (`documents/diagrams/`)
+- **Data Architecture.drawio** - System components and data flow
+- **Data Flow diagram.drawio** - ETL pipeline visualization
+- **Data Integration Model.drawio** - Source system integration design
+- **Data Mart (Star Schema).drawio** - Dimensional model structure
+
+#### Data Catalogs (`documents/project_catalogs/`)
+- **data_catalog.ipynb** - Data dictionary and field definitions
+- **full_project_catalog.ipynb** - Complete project documentation
+- **naminng_conventions.ipynb** - Naming standards and conventions
+
+---
+
+## Key Features
+
+✅ **End-to-End ETL**: Complete data pipeline from source to analytics-ready views  
+✅ **Medallion Architecture**: Proven layered approach for data warehouse design  
+✅ **Data Quality**: Comprehensive validation and cleansing throughout the pipeline  
+✅ **Star Schema**: Optimized dimensional model for fast analytical queries  
+✅ **Multi-Source Integration**: Seamlessly combine data from CRM and ERP systems  
+✅ **Documentation**: Detailed diagrams, data catalogs, and naming conventions  
+✅ **SQL Scripts**: Well-commented, modular scripts for easy understanding and maintenance  
+✅ **Quality Tests**: Built-in validation to ensure data integrity  
+
+---
+
+## Project Status
+
+**Status**: ✅ **Complete**
+
+The data warehouse is fully implemented with:
+- ✅ Database and schema setup
+- ✅ All three Medallion layers (Bronze, Silver, Gold)
+- ✅ ETL/ELT processes for all source systems
+- ✅ Data quality validation
+- ✅ Dimensional modeling (Star Schema)
+- ✅ Comprehensive documentation
+
+---
+
+## How to Use This Project
+
+### For Data Engineers
+1. Review the **Architecture** section above
+2. Examine the SQL scripts in order: `db_ddl` → `bronze` → `silver` → `gold`
+3. Understand data quality checks in the `tests/` folder
+4. Reference naming conventions in `documents/project_catalogs/naminng_conventions.ipynb`
+
+### For Data Analysts
+1. Review `documents/diagrams/Data Mart (Star Schema).drawio` for table relationships
+2. Query the Gold layer views:
+   - `SELECT * FROM gold.dim_customers`
+   - `SELECT * FROM gold.dim_products`
+   - `SELECT * FROM gold.fact_sales`
+3. Reference `documents/project_catalogs/data_catalog.ipynb` for field definitions
+
+### For Business Stakeholders
+1. Review the **Project Objectives & Scope** section
+2. View the **Data Mart (Star Schema)** diagram for business entity relationships
+3. Request analytics queries from the Gold layer dimensions and facts
+
+---
+
+## Key Insights & Learnings
+
+This project demonstrates:
+- **Medallion Architecture Implementation**: Best practices for layered data warehouse design
+- **Data Integration**: Techniques for consolidating multi-source data
+- **Data Quality Assurance**: Comprehensive validation at each layer
+- **SQL Mastery**: T-SQL expertise including CTEs, window functions, and views
+- **Dimensional Modeling**: Star schema design for analytical performance
+- **Documentation**: Clear, maintainable code with comprehensive explanations
 
 ---
 
@@ -83,9 +409,22 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ## About Me
 
-Hi there! I'm **Khan**, an aspiring self taught Data Scientist with skills in **Data Engineering** and **Data Analytics**. 
+Hi there! I'm **Khan**, a self-taught **Data Scientist** and **Data Engineer** with expertise in:
+- 🏗️ **Data Architecture & Engineering**: Designing and building scalable data platforms
+- 📊 **Data Analytics & BI**: Extracting actionable insights from data
+- 🔧 **ETL/ELT Pipelines**: Building robust data integration workflows
+- 💾 **Data Warehousing**: Implementing Medallion Architecture and dimensional modeling
+- 🐍 **Python & SQL**: Advanced programming for data engineering and analysis
 
-I enjoy bridging the gap between raw data and business strategy whether that means building robust ETL pipelines and designing data architectures, or analyzing metrics to extract actionable insights.
+I'm passionate about **bridging the gap between raw data and business strategy**—whether that means building robust ETL pipelines and designing scalable data architectures, or analyzing metrics to extract actionable insights.
 
-*I'm actively looking for opportunities where I can apply my end-to-end data skills to solve real world problems. Feel free to reach out or connect!*
-* [Connect on LinkedIn](https://www.linkedin.com/in/kthedatascientist/) | [Connect on Email](KhanDataScience@proton.me)
+### 📬 Let's Connect!
+I'm actively looking for opportunities where I can apply my end-to-end data skills to solve real-world problems.
+
+- **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/kthedatascientist/)
+- **Email**: [KhanDataScience@proton.me](mailto:KhanDataScience@proton.me)
+
+---
+
+**Last Updated**: August 2024  
+**Repository**: SQL_DWH_Analytics_Project
