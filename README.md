@@ -383,5 +383,5 @@ I'm actively looking for opportunities where I can apply my end-to-end data skil
 
 ---
 
-**Last Updated**: August 2024  
+**Last Updated**: August 2026
 **Repository**: SQL_DWH_Analytics_Project
