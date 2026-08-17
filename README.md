@@ -96,6 +96,26 @@ SQL_DWH_Analytics_Project/
 └── README.md                          # This file
 ```
 
+### Complementary Projects
+
+The above structure focuses on the **Data Warehouse Development** layer. For **Exploratory Data Analysis** on the resulting Gold Layer output, see the companion project:
+
+```
+Exploratory_Data_Analysis_EDA_Project/    # (Separate Repository)
+│
+└── SQL_EDA_Project/
+    ├── EDA_project.sql                   # Comprehensive EDA queries
+    │   ├── Structural & Metadata Discovery
+    │   ├── Dimensions Exploration
+    │   ├── Dates Exploration
+    │   ├── Measures Exploration
+    │   ├── Magnitude Analysis
+    │   └── Ranking Analysis
+    └── README.md                         # EDA documentation
+```
+
+**Repository Link**: [Exploratory_Data_Analysis_EDA_Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
+
 ---
 
 ## Architecture Overview
