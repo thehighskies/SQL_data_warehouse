@@ -274,18 +274,18 @@ Views expose business-ready analytical data:
 ### Quality Checks Implemented
 
 #### Silver Layer Tests (`tests/silver_quality_checks_.sql`)
-- ✅ Duplicate & NULL checks on primary keys
-- ✅ Whitespace validation in string fields
-- ✅ Data standardization verification
-- ✅ Date range and order validation
-- ✅ Cross-field consistency checks
+- Duplicate & NULL checks on primary keys
+- Whitespace validation in string fields
+- Data standardization verification
+- Date range and order validation
+- Cross-field consistency checks
 
 #### Gold Layer Tests (`tests/gold_quality_checks.sql`)
-- ✅ Data completeness (no unexpected NULLs)
-- ✅ Data consistency (standardized values like 'Unknown')
-- ✅ Primary key uniqueness
-- ✅ Referential integrity (Foreign keys)
-- ✅ Dimension cardinality validation
+- Data completeness (no unexpected NULLs)
+- Data consistency (standardized values like 'Unknown')
+- Primary key uniqueness
+- Referential integrity (Foreign keys)
+- Dimension cardinality validation
 
 ### Running Quality Tests
 ```sql
@@ -317,29 +317,21 @@ EXEC sp_executesql N'...' -- scripts/tests/gold_quality_checks.sql
 ---
 
 ## Key Features
-
-✅ **End-to-End ETL**: Complete data pipeline from source to analytics-ready views  
-✅ **Medallion Architecture**: Proven layered approach for data warehouse design  
-✅ **Data Quality**: Comprehensive validation and cleansing throughout the pipeline  
-✅ **Star Schema**: Optimized dimensional model for fast analytical queries  
-✅ **Multi-Source Integration**: Seamlessly combine data from CRM and ERP systems  
-✅ **Documentation**: Detailed diagrams, data catalogs, and naming conventions  
-✅ **SQL Scripts**: Well-commented, modular scripts for easy understanding and maintenance  
-✅ **Quality Tests**: Built-in validation to ensure data integrity  
+ **End-to-End ETL**: Complete data pipeline from source to analytics-ready views   **Medallion Architecture**: Proven layered approach for data warehouse design **Data Quality**: Comprehensive validation and cleansing throughout the pipeline **Star Schema**: Optimized dimensional model for fast analytical queries **Multi-Source Integration**: Seamlessly combine data from CRM and ERP systems **Documentation**: Detailed diagrams, data catalogs, and naming conventions **SQL Scripts**: Well-commented, modular scripts for easy understanding and maintenance **Quality Tests**: Built-in validation to ensure data integrity  
 
 ---
 
 ## Project Status
 
-**Status**: ✅ **Complete**
+**Status**: **Complete**
 
 The data warehouse is fully implemented with:
-- ✅ Database and schema setup
-- ✅ All three Medallion layers (Bronze, Silver, Gold)
-- ✅ ETL/ELT processes for all source systems
-- ✅ Data quality validation
-- ✅ Dimensional modeling (Star Schema)
-- ✅ Comprehensive documentation
+- Database and schema setup
+- All three Medallion layers (Bronze, Silver, Gold)
+- ETL/ELT processes for all source systems
+- Data quality validation
+- Dimensional modeling (Star Schema)
+- Comprehensive documentation
 
 ---
 
@@ -380,7 +372,7 @@ This project demonstrates:
 
 ## Related Projects
 
-### 🔍 SQL EDA Project - Exploratory Data Analysis
+### SQL EDA Project - Exploratory Data Analysis
 **Complementary Project**: [Exploratory Data Analysis (EDA) Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
 
 This comprehensive **Exploratory Data Analysis** project performs an in-depth analysis on the **Gold Layer** of a data warehouse. It systematically explores data structure, metadata, and key business metrics to provide actionable insights.
@@ -410,16 +402,16 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ## About Me
 
-Hi there! I'm **Khan**, a self-taught **Data Scientist** and **Data Engineer** with expertise in:
-- 🏗️ **Data Architecture & Engineering**: Designing and building scalable data platforms
-- 📊 **Data Analytics & BI**: Extracting actionable insights from data
-- 🔧 **ETL/ELT Pipelines**: Building robust data integration workflows
-- 💾 **Data Warehousing**: Implementing Medallion Architecture and dimensional modeling
-- 🐍 **Python & SQL**: Advanced programming for data engineering and analysis
+Hi there! I'm **Khan**, a **Data Science** student with skills in:
+- **Data Architecture & Engineering**: Designing and building data platforms
+- **Data Analytics & BI**: Extracting actionable insights from data
+- **ETL/ELT Pipelines**: Building data integration workflows
+- **Data Warehousing**: Implementing Medallion Architecture and dimensional modeling
+- **SQL**: data engineering and analysis
 
-I'm passionate about **bridging the gap between raw data and business strategy**—whether that means building robust ETL pipelines and designing scalable data architectures, or analyzing metrics to extract actionable insights.
+I'm passionate about **Data**—whether that means building robust ETL pipelines and designing scalable data architectures, or analyzing metrics to extract actionable insights.
 
-### 📬 Let's Connect!
+### ✉️ Let's Connect!
 I'm actively looking for opportunities where I can apply my end-to-end data skills to solve real-world problems.
 
 - **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/kthedatascientist/)
@@ -427,5 +419,6 @@ I'm actively looking for opportunities where I can apply my end-to-end data skil
 
 ---
 
-**Last Updated**: August 2026
+**Last Updated**: August, 2026
 **Repository**: SQL_DWH_Analytics_Project
+**Related Projects**: SQL EDA Project - Exploratory Data Analysis
