@@ -358,6 +358,30 @@ This project demonstrates:
 
 ---
 
+## Related Projects
+
+### 🔍 SQL EDA Project - Exploratory Data Analysis
+**Complementary Project**: [Exploratory Data Analysis (EDA) Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
+
+This comprehensive **Exploratory Data Analysis** project performs an in-depth analysis on the **Gold Layer** of a data warehouse. It systematically explores data structure, metadata, and key business metrics to provide actionable insights.
+
+**EDA Components**:
+- **Structural & Metadata Discovery**: Identify all tables, columns, and views using system catalog views
+- **Dimensions Exploration**: Analyze categorical values and cardinality (geography, products, maintenance status)
+- **Dates Exploration**: Identify temporal boundaries and data span
+- **Measures Exploration**: Calculate key business metrics (revenue, items sold, order counts, etc.)
+- **Magnitude Analysis**: Compare measures by dimensions to understand relative importance
+- **Ranking Analysis**: Identify top/bottom performers in products, customers, and regions
+
+**How It Complements This Project**:
+- This **SQL_DWH_Analytics_Project** builds the data warehouse (Bronze → Silver → Gold layers)
+- The **EDA Project** analyzes the resulting Gold Layer output
+- Together, they form a complete **Data Engineering + Analytics** workflow
+
+**Technologies**: SQL Server (T-SQL), System Catalog Views (INFORMATION_SCHEMA), Window Functions, Common Table Expressions (CTEs)
+
+---
+
 ## License
 
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
