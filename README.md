@@ -51,49 +51,49 @@ This project showcases expertise across two primary domains:
 ```
 SQL_DWH_Analytics_Project/
 │
-├── datasets/                          # Source data files
-│   ├── source_crm/                    # CRM system data
-│   │   ├── cust_info.csv             # Customer information
-│   │   ├── prd_info.csv              # Product information
-│   │   └── sales_details.csv         # Sales transactions
-│   └── source_erp/                    # ERP system data
-│       ├── CUST_AZ12.csv             # Customer details
-│       ├── LOC_A101.csv              # Location information
-│       └── PX_CAT_G1V2.csv           # Product categories
+├── datasets/                                # Source data files
+│   ├── source_crm/                          # CRM system data
+│   │   ├── cust_info.csv                    # Customer information
+│   │   ├── prd_info.csv                     # Product information
+│   │   └── sales_details.csv                # Sales transactions
+│   └── source_erp/                          # ERP system data
+│       ├── CUST_AZ12.csv                    # Customer details
+│       ├── LOC_A101.csv                     # Location information
+│       └── PX_CAT_G1V2.csv                  # Product categories
 │
-├── scripts/                           # SQL scripts organized by layer
-│   ├── db_ddl/                        # Database setup
-│   │   └── db_ddl_script.sql         # Create database & schemas
-│   ├── bronze/                        # Raw data layer
-│   │   ├── bronze_ddl.sql            # Table definitions
-│   │   ├── bronze_load.sql           # Data ingestion
-│   │   └── bronze_sp.sql             # Stored procedures
-│   ├── silver/                        # Cleansed data layer
-│   │   ├── silver_ddl.sql            # Table definitions
-│   │   ├── silver_loading.sql        # Data transformation
-│   │   ├── silver_data_transformation.sql  # Business logic
-│   │   └── silver_sp.sql             # Stored procedures
-│   └── gold/                          # Analytical layer
-│       ├── gold_ddl.sql              # Dimensional views
-│       └── gold_data_integration.sql # Analytics queries
+├── scripts/                                 # SQL scripts organized by layer
+│   ├── db_ddl/                              # Database setup
+│   │   └── db_ddl_script.sql                # Create database & schemas
+│   ├── bronze/                              # Raw data layer
+│   │   ├── bronze_ddl.sql                   # Table definitions
+│   │   ├── bronze_load.sql                  # Data ingestion
+│   │   └── bronze_sp.sql                    # Stored procedures
+│   ├── silver/                              # Cleansed data layer
+│   │   ├── silver_ddl.sql                   # Table definitions
+│   │   ├── silver_loading.sql               # Data transformation
+│   │   ├── silver_data_transformation.sql   # Business logic
+│   │   └── silver_sp.sql                    # Stored procedures
+│   └── gold/                                # Analytical layer
+│       ├── gold_ddl.sql                     # Dimensional views
+│       └── gold_data_integration.sql        # Analytics queries
 │
-├── tests/                             # Data quality tests
-│   ├── silver_quality_checks_.sql    # Silver layer validation
-│   └── gold_quality_checks.sql       # Gold layer validation
+├── tests/                                   # Data quality tests
+│   ├── silver_quality_checks_.sql           # Silver layer validation
+│   └── gold_quality_checks.sql              # Gold layer validation
 │
-├── documents/                         # Documentation & artifacts
-│   ├── diagrams/                      # Architecture & design diagrams
-│   │   ├── Data Architecture.drawio  # System architecture
-│   │   ├── Data Flow diagram.drawio  # ETL flow
-│   │   ├── Data Integration Model.drawio  # Integration design
-│   │   └── Data Mart (Star Schema).drawio  # Dimensional model
-│   └── project_catalogs/              # Data documentation
-│       ├── data_catalog.ipynb        # Data dictionary
-│       ├── full_project_catalog.ipynb # Complete catalog
-│       └── naminng_conventions.ipynb # Naming standards
+├── documents/                               # Documentation & artifacts
+│   ├── diagrams/                            # Architecture & design diagrams
+│   │   ├── Data Architecture.drawio         # System architecture
+│   │   ├── Data Flow diagram.drawio         # ETL flow
+│   │   ├── Data Integration Model.drawio    # Integration design
+│   │   └── Data Mart (Star Schema).drawio   # Dimensional model
+│   └── project_catalogs/                    # Data documentation
+│       ├── data_catalog.ipynb               # Data dictionary
+│       ├── full_project_catalog.ipynb       # Complete catalog
+│       └── naminng_conventions.ipynb        # Naming standards
 │
-├── LICENSE                            # MIT License
-└── README.md                          # This file
+├── LICENSE                                  # MIT License
+└── README.md                                # This file
 ```
 
 ### Complementary Projects
@@ -104,7 +104,7 @@ The above structure focuses on the **Data Warehouse Development** layer. The res
 ```
 SQL_EDA_Project/
 ├── Scripts/
-│   ├── EDA_project.sql                   # Comprehensive EDA queries
+│   ├── EDA_project.sql                       # Comprehensive EDA queries
 │   │   ├── Structural & Metadata Discovery
 │   │   ├── Dimensions Exploration
 │   │   ├── Dates Exploration
@@ -112,30 +112,33 @@ SQL_EDA_Project/
 │   │   ├── Magnitude Analysis
 │   │   └── Ranking Analysis
 │   └── key_matrics_report.sql
-├── LICENSE
-├── README.md.                            # EDA documentation
+│
+├── LICENSE                                   # MIT License
+└── README.md.                                # EDA documentation
 ```
 
 **Repository Link**: [Exploratory_Data_Analysis_EDA_Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
 
 #### 2. Advance Data Analytics (ADA) Project
 ```
-SQL_Advance_Data_Analytics_ADA_Project/   # (Separate Repository)
+SQL_Advance_Data_Analytics_ADA_Project/      # (Separate Repository)
 │
-├── ADA_project.sql                       # Temporal & Cumulative Analysis
+├── ADA_project.sql                          # Temporal & Cumulative Analysis
 │   ├── Changes Over Time Analysis
 │   ├── Cumulative Metrics (Running Totals)
 │   ├── Performance Analysis (YoY, MoM)
 │   ├── Part-to-Whole Analysis
 │   └── Data Segmentation
-├── customers_report.sql                  # Customer Analytics View
+├── customers_report.sql                     # Customer Analytics View
 │   ├── Customer Segmentation (VIP, Regular, New)
 │   ├── Age Group Analysis
 │   └── KPIs (Recency, AOV, LTV)
-├── products_report.sql                   # Product Analytics View
+├── products_report.sql                      # Product Analytics View
 │   ├── Product Segmentation (Performance Tiers)
 │   └── Revenue & Profitability Metrics
-└── README.md                             # ADA documentation
+│
+├── README.md                                # ADA documentation
+└── LICENSE                                  # MIT License
 ```
 
 **Repository Link**: [SQL_Advance_Data_Analytics_ADA_Project](https://github.com/thehighskies/SQL_Advance_Data_Analytics_ADA_Project)
