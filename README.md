@@ -470,6 +470,6 @@ I'm actively looking for opportunities where I can apply my end-to-end data skil
 
 ---
 
-**Last Updated**: August, 2026
-**Repository**: SQL_DWH_Analytics_Project
-**Related Projects**: SQL EDA Project - Exploratory Data Analysis
+- **Last Updated**: August, 2026
+- **Repository**: SQL_DWH_Analytics_Project
+- **Related Projects**: SQL EDA Project - Exploratory Data Analysis
