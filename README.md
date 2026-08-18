@@ -102,17 +102,18 @@ The above structure focuses on the **Data Warehouse Development** layer. The res
 
 #### 1. Exploratory Data Analysis (EDA) Project
 ```
-Exploratory_Data_Analysis_EDA_Project/    # (Separate Repository)
-│
-└── SQL_EDA_Project/
-    ├── EDA_project.sql                   # Comprehensive EDA queries
-    │   ├── Structural & Metadata Discovery
-    │   ├── Dimensions Exploration
-    │   ├── Dates Exploration
-    │   ├── Measures Exploration
-    │   ├── Magnitude Analysis
-    │   └── Ranking Analysis
-    └── README.md                         # EDA documentation
+SQL_EDA_Project/
+├── Scripts/
+│   ├── EDA_project.sql                   # Comprehensive EDA queries
+│   │   ├── Structural & Metadata Discovery
+│   │   ├── Dimensions Exploration
+│   │   ├── Dates Exploration
+│   │   ├── Measures Exploration
+│   │   ├── Magnitude Analysis
+│   │   └── Ranking Analysis
+│   └── key_matrics_report.sql
+├── LICENSE
+├── README.md.                            # EDA documentation
 ```
 
 **Repository Link**: [Exploratory_Data_Analysis_EDA_Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
