@@ -98,8 +98,9 @@ SQL_DWH_Analytics_Project/
 
 ### Complementary Projects
 
-The above structure focuses on the **Data Warehouse Development** layer. For **Exploratory Data Analysis** on the resulting Gold Layer output, see the companion project:
+The above structure focuses on the **Data Warehouse Development** layer. The resulting Gold Layer can be analyzed using two companion projects:
 
+#### 1. Exploratory Data Analysis (EDA) Project
 ```
 Exploratory_Data_Analysis_EDA_Project/    # (Separate Repository)
 │
@@ -115,6 +116,28 @@ Exploratory_Data_Analysis_EDA_Project/    # (Separate Repository)
 ```
 
 **Repository Link**: [Exploratory_Data_Analysis_EDA_Project](https://github.com/thehighskies/Exploratory_Data_Analysis_EDA_Project)
+
+#### 2. Advance Data Analytics (ADA) Project
+```
+SQL_Advance_Data_Analytics_ADA_Project/   # (Separate Repository)
+│
+├── ADA_project.sql                       # Temporal & Cumulative Analysis
+│   ├── Changes Over Time Analysis
+│   ├── Cumulative Metrics (Running Totals)
+│   ├── Performance Analysis (YoY, MoM)
+│   ├── Part-to-Whole Analysis
+│   └── Data Segmentation
+├── customers_report.sql                  # Customer Analytics View
+│   ├── Customer Segmentation (VIP, Regular, New)
+│   ├── Age Group Analysis
+│   └── KPIs (Recency, AOV, LTV)
+├── products_report.sql                   # Product Analytics View
+│   ├── Product Segmentation (Performance Tiers)
+│   └── Revenue & Profitability Metrics
+└── README.md                             # ADA documentation
+```
+
+**Repository Link**: [SQL_Advance_Data_Analytics_ADA_Project](https://github.com/thehighskies/SQL_Advance_Data_Analytics_ADA_Project)
 
 ---
 
@@ -391,6 +414,34 @@ This comprehensive **Exploratory Data Analysis** project performs an in-depth an
 - Together, they form a complete **Data Engineering + Analytics** workflow
 
 **Technologies**: SQL Server (T-SQL), System Catalog Views (INFORMATION_SCHEMA), Window Functions, Common Table Expressions (CTEs)
+
+---
+
+### SQL Advance Data Analytics (ADA) Project
+**Complementary Project**: [SQL Advance Data Analytics (ADA) Project](https://github.com/thehighskies/SQL_Advance_Data_Analytics_ADA_Project)
+
+This **Advanced Data Analytics** project leverages SQL to create a robust analytical framework for examining customer behavior, product performance, and business trends. It implements sophisticated analytical techniques to support data-driven decision making.
+
+**ADA Components**:
+- **Temporal Analysis**: Track metrics evolution by year, month, quarter, and year-month combinations
+- **Cumulative Analysis**: Running totals and moving averages for trend analysis
+- **Performance Analysis**: Year-over-Year (YoY) and Month-over-Month (MoM) comparisons
+- **Part-to-Whole Analysis**: Evaluate segment contributions to overall performance
+- **Customer Segmentation**: VIP (12+ months, $5K+ sales), Regular (12+ months, ≤$5K sales), New (<12 months)
+- **Product Segmentation**: High-Performer (≥$10K sales), Mid-Range ($5K-$9.9K), Low-Performer (<$5K)
+- **KPI Calculation**: Recency, Average Order Value, Average Monthly Spend, Customer/Product Lifetime Value
+
+**Key Deliverables**:
+- **ADA_project.sql**: Comprehensive temporal and cumulative analysis queries
+- **customers_report.sql**: Customer analytics view with segmentation and KPIs
+- **products_report.sql**: Product analytics view with performance metrics
+
+**How It Complements This Project**:
+- This **SQL_DWH_Analytics_Project** builds the data warehouse (Bronze → Silver → Gold layers)
+- The **ADA Project** performs advanced analytics on the Gold Layer output
+- Together with EDA, they form a complete **Data Engineering + Analytics + Insights** workflow
+
+**Technologies**: SQL Server (T-SQL), Window Functions, CTEs, Aggregations, View Creation
 
 ---
 
